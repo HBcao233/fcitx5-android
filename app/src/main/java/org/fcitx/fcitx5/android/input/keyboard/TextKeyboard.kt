@@ -52,17 +52,17 @@ class TextKeyboard(
                 AlphabetKey("H", "/"),
                 AlphabetKey("J", "#"),
                 AlphabetKey("K", "("),
-                AlphabetKey("L", ")")
+                AlphabetKey("L", "?")
             ),
             listOf(
                 CapsKey(),
                 AlphabetKey("Z", "'"),
                 AlphabetKey("X", ":"),
-                AlphabetKey("C", "\""),
-                AlphabetKey("V", "?"),
-                AlphabetKey("B", "!"),
+                AlphabetKey("C", "-"),
+                AlphabetKey("V", "_"),
+                AlphabetKey("B", ":"),
                 AlphabetKey("N", "~"),
-                AlphabetKey("M", "\\"),
+                AlphabetKey("M", "/"),
                 BackspaceKey()
             ),
             listOf(
@@ -91,10 +91,17 @@ class TextKeyboard(
     }
 
     private val keepLettersUppercase by AppPrefs.getInstance().keyboard.keepLettersUppercase
+    private var doUppercase = false
 
     init {
         updateLangSwitchKey(showLangSwitchKey.getValue())
         showLangSwitchKey.registerOnChangeListener(showLangSwitchKeyListener)
+        doUppercase = if (ime.displayName == "English") {
+            false
+        } else {
+            keepLettersUppercase
+        }
+        updateAlphabetKeys()
     }
 
     private val textKeys: List<TextKeyView> by lazy {
@@ -231,7 +238,7 @@ class TextKeyboard(
             if (it.def !is KeyDef.Appearance.AltText) return
             it.mainText.text = it.def.displayText.let { str ->
                 if (str.length != 1 || !str[0].isLetter()) return@forEach
-                if (keepLettersUppercase) str.uppercase() else transformAlphabet(str)
+                if (doUppercase) str.uppercase() else transformAlphabet(str)
             }
         }
     }
