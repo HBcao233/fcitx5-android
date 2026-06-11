@@ -20,7 +20,7 @@ import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
-import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.google.android.material.snackbar.BaseTransientBottomBar.BaseCallback
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.snackbar.SnackbarContentLayout
@@ -132,7 +132,7 @@ class ClipboardWindow : InputWindow.ExtendedInputWindow<ClipboardWindow>() {
     private val ui by lazy {
         ClipboardUi(context, theme).apply {
             recyclerView.apply {
-                layoutManager = LinearLayoutManager(context)
+                layoutManager = StaggeredGridLayoutManager(1, StaggeredGridLayoutManager.VERTICAL)
                 adapter = this@ClipboardWindow.adapter
             }
             ItemTouchHelper(object : ItemTouchHelper.Callback() {
