@@ -30,7 +30,8 @@ jobs:
 
       - name: Setup Android environment
         uses: android-actions/setup-android@v3
-        packages: 'build-tools;29.0.3'
+        with:
+          packages: 'build-tools;29.0.3'
 
       - name: Install Android NDK
         run: |
