@@ -93,7 +93,7 @@ class TextEditingUi(
         add(leftButton, lParams {
             topOfParent()
             leftOfParent()
-            above(homeButton)
+            bottomToTopOf(homeButton)
             rightToLeftOf(selectButton)
         })
         add(upButton, lParams {
@@ -117,7 +117,7 @@ class TextEditingUi(
         add(rightButton, lParams {
             topOfParent()
             leftToRightOf(selectButton)
-            above(endButton)
+            bottomToTopOf(endButton)
             rightToLeftOf(selectAllButton)
         })
 
@@ -166,7 +166,7 @@ class TextEditingUi(
             below(copyButton)
             leftToRightOf(rightButton)
             rightOfParent()
-            above(backspaceButton)
+            bottomOfParent()
             matchConstraintPercentWidth = 0.3f
         })
     }
