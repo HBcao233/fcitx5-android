@@ -93,7 +93,7 @@ class TextEditingUi(
         add(leftButton, lParams {
             topOfParent()
             leftOfParent()
-            bottomToTopOf(homeButton)
+            above(homeButton)
             rightToLeftOf(selectButton)
         })
         add(upButton, lParams {
@@ -117,7 +117,7 @@ class TextEditingUi(
         add(rightButton, lParams {
             topOfParent()
             leftToRightOf(selectButton)
-            bottomToTopOf(endButton)
+            above(endButton)
             rightToLeftOf(selectAllButton)
         })
 
