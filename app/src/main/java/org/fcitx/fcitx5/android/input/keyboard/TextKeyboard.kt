@@ -96,11 +96,6 @@ class TextKeyboard(
     init {
         updateLangSwitchKey(showLangSwitchKey.getValue())
         showLangSwitchKey.registerOnChangeListener(showLangSwitchKeyListener)
-        doUppercase = if (ime.displayName == "English") {
-            false
-        } else {
-            keepLettersUppercase
-        }
         updateAlphabetKeys()
     }
 
@@ -176,9 +171,17 @@ class TextKeyboard(
             append(ime.displayName)
             ime.subMode.run { label.ifEmpty { name.ifEmpty { null } } }?.let { append(" ($it)") }
         }
+
         if (capsState != CapsState.None) {
             switchCapsState()
         }
+
+        doUppercase = if (ime.displayName == "English") {
+            false
+        } else {
+            keepLettersUppercase
+        }
+        updateAlphabetKeys()
     }
 
     private fun transformPopupPreview(c: String): String {
