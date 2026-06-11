@@ -30,6 +30,7 @@ jobs:
 
       - name: Setup Android environment
         uses: android-actions/setup-android@v3
+        packages: 'build-tools;29.0.3'
 
       - name: Install Android NDK
         run: |
@@ -60,8 +61,13 @@ jobs:
         run: |
           ./gradlew :app:assembleRelease
 
+      - name: Set Build Tools Version
+        run: echo "BUILD_TOOLS_VERSION=$(ls ~/Library/Android/sdk/build-tools/ | tail -n 1)" >> $GITHUB_ENV
+
       - name: Sign Android APK
         uses: r0adkll/sign-android-release@v1
+        env:
+          BUILD_TOOLS_VERSION: ${{ env.BUILD_TOOLS_VERSION }}
         with:
           releaseDirectory: app/build/outputs/apk/release
           signingKeyBase64: ${{ secrets.SIGNING_KEY }}
