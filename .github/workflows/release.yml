@@ -12,9 +12,9 @@ jobs:
       matrix:
         os:
           - ubuntu-24.04
-          - macos-15-intel
-          - macos-26
-          - windows-2025
+          # - macos-15-intel
+          # - macos-26
+          # - windows-2025
     steps:
       - name: Fetch source code
         uses: actions/checkout@v6
@@ -76,8 +76,14 @@ jobs:
           keyStorePassword: ${{ secrets.KEY_STORE_PASSWORD }}
           keyPassword: ${{ secrets.KEY_PASSWORD }}
 
-      - name: Upload app
+      - name: Upload app aligned
         uses: actions/upload-artifact@v6
         with:
-          name: app-${{ matrix.os }}
-          path: app/build/outputs/apk/release/
+          name: app-aligned-${{ matrix.os }}
+          path: 'app/build/outputs/apk/release/*-release-unsigned-aligned.apk'
+
+      - name: Upload app unsigned
+        uses: actions/upload-artifact@v6
+        with:
+          name: app-unsigned-${{ matrix.os }}
+          path: 'app/build/outputs/apk/release/*-release-unsigned.apk'
