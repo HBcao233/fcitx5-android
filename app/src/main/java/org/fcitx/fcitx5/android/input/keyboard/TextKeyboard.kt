@@ -128,7 +128,7 @@ class TextKeyboard(
                                 act = action.act.uppercase(),
                                 states = KeyStates(KeyState.Virtual, KeyState.Shift)
                             )
-                            switchCapsState()
+                            switchCapsState(true)
                         }
                         CapsState.Lock -> {
                             transformed = action.copy(
@@ -140,11 +140,11 @@ class TextKeyboard(
                 }
                 KeyActionListener.Source.Popup -> {
                     if (capsState == CapsState.Once) {
-                        switchCapsState()
+                        switchCapsState(true)
                     }
                 }
             }
-            is KeyAction.CapsAction -> switchCapsState(action.lock)
+            is KeyAction.CapsAction -> switchCapsState(true)
             else -> {}
         }
         super.onAction(transformed, source)
@@ -172,11 +172,11 @@ class TextKeyboard(
         }
 
         if (capsState != CapsState.None) {
-            switchCapsState()
+            switchCapsState(true)
         }
 
-        doUppercase = if (ime.displayName == "English") {
-            false
+        doUppercase = if (ime.languageCode == "zh_CN") {
+            true
         } else {
             keepLettersUppercase
         }
