@@ -44,33 +44,33 @@ class TextKeyboard(
                 AlphabetKey("P", "0")
             ),
             listOf(
-                AlphabetKey("A", "@"),
-                AlphabetKey("S", "*"),
-                AlphabetKey("D", "+"),
-                AlphabetKey("F", "-"),
-                AlphabetKey("G", "="),
-                AlphabetKey("H", "/"),
-                AlphabetKey("J", "#"),
-                AlphabetKey("K", "("),
+                AlphabetKey("A", "~"),
+                AlphabetKey("S", "!"),
+                AlphabetKey("D", "@"),
+                AlphabetKey("F", "#"),
+                AlphabetKey("G", "%"),
+                AlphabetKey("H", "'"),
+                AlphabetKey("J", "&"),
+                AlphabetKey("K", "*"),
                 AlphabetKey("L", "?")
             ),
             listOf(
                 CapsKey(),
-                AlphabetKey("Z", "'"),
-                AlphabetKey("X", ":"),
+                AlphabetKey("Z", "("),
+                AlphabetKey("X", ")"),
                 AlphabetKey("C", "-"),
                 AlphabetKey("V", "_"),
                 AlphabetKey("B", ":"),
-                AlphabetKey("N", "~"),
+                AlphabetKey("N", ";"),
                 AlphabetKey("M", "/"),
                 BackspaceKey()
             ),
             listOf(
                 LayoutSwitchKey("?123", ""),
                 CommaKey(0.1f, KeyDef.Appearance.Variant.Alternative),
-                LanguageKey(),
                 SpaceKey(),
                 SymbolKey(".", 0.1f, KeyDef.Appearance.Variant.Alternative),
+                LanguageKey(),
                 ReturnKey()
             )
         )
