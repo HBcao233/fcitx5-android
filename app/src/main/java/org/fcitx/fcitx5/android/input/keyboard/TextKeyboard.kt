@@ -96,7 +96,6 @@ class TextKeyboard(
     init {
         updateLangSwitchKey(showLangSwitchKey.getValue())
         showLangSwitchKey.registerOnChangeListener(showLangSwitchKeyListener)
-        updateAlphabetKeys()
     }
 
     private val textKeys: List<TextKeyView> by lazy {
