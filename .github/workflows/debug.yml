@@ -56,7 +56,7 @@ jobs:
       - name: Setup Gradle
         uses: gradle/actions/setup-gradle@v5
 
-      - name: Build Release APK
+      - name: Build Debug APK
         run: |
           ./gradlew :app:assembleDebug
 

@@ -79,4 +79,3 @@ jobs:
         with:
           name: app-${{ matrix.os }}
           path: 'app/build/outputs/apk/release/*-signed.apk'
-
